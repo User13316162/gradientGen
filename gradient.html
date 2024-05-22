@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradiant || Generater </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <div class="container">
+        <div class="btn-class">
+            <button id="btn1">#051937</button>
+            <button id="btn2">#008793</button>
+        </div>
+        <h2>Copy your code here</h2>
+        <div class="copyCode">
+            background-image: linear-gradient(to right,rgba(92,145,299),rgba(152,63,198));
+        </div>
+    </div>
+    </section>
+    <script>
+        let btn1 = document.getElementById('btn1');
+        let btn2 = document.getElementById('btn2');
+        let copySec = document.querySelector('.copyCode');
+        let rgb1 = "#051937";
+        let rgb2 = "#008793";
+
+
+        const hexValues = () =>{
+            let hexNum = "0123456789abcdef";
+                let colors = "#";
+                for (let i = 0; i < 6; i++) {
+                    colors = colors + hexNum[Math.floor(Math.random() * 16)];
+                }
+               return colors;
+        }
+
+        const handlebtn1 = () =>{
+                 rgb1 = hexValues();
+                console.log(rgb1);
+                document.body.style.backgroundImage = `linear-gradient(to right,${rgb1},${rgb2})`;
+                copySec.innerHTML = `background-image: linear-gradient(to right,${rgb1},${rgb2});`;
+                btn1.innerText = rgb1;
+        }
+
+        const handlebtn2 = () =>{
+                 rgb2 = hexValues();
+                console.log(rgb2);
+                document.body.style.backgroundImage = `linear-gradient(to right,${rgb1},${rgb2})`;
+                copySec.innerHTML = `background-image: linear-gradient(to right,${rgb1},${rgb2});`;
+                btn2.innerText = rgb2;
+            }
+
+            
+            
+            btn1.addEventListener('click',handlebtn1);
+            
+            btn2.addEventListener('click',handlebtn2);
+
+            copySec.addEventListener('click',() =>{
+                navigator.clipboard.writeText(copySec.innerText);
+                alert("hex code copied");
+            });
+            
+    </script>
+</body>
+</html>
